@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>Scratch Website Redesign</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&Display=swap" rel="stylesheet"> 
+
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.light_blue-blue.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<style>
+.round{
+    background-color: #0285c1;
+    border-radius: 10px;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    height: 5vh;
+    
+    
+}
+.mdl-textfield__label::after{
+    display: none;
+}
+header, .mdl-navigation__link, .mdl-layout__header-row{color:white !important; align-items: center !important; align-content: center !important; text-align: center !important;}
+.mdl-layout__header-row{
+    text-align: end;
+    text-align: right; !important;
+    
+}
+.mdl-navigation{
+  left: 47% !important;
+  position:absolute;
+  font-weight:bolder;
+}</style>
+
+</head>
+<body>
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header style="align-content: center;" class="mdl-layout__header">
+        
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title"><img src="logo_sm.png" alt="https://scratch.mit.edu/images/logo_sm.png" style="font-weight: normal; height: 4vh"></span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer" style="width: 20px;"></div><!-- Textfield with Floating Label -->
+        <div class="round">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
+            <input class="mdl-textfield__input" type="text" id="search">
+            <label class="mdl-textfield__label" for="search">Search</label>
+          </div></div>
+        <!-- Navigation. We hide it in small screens. -->
+        <nav style="align-content: end !important" class="mdl-navigation mdl-layout">
+          <a class="mdl-navigation__link" href="">Open Editor</a>
+          <a class="mdl-navigation__link" href="">Feed</a>
+          <a class="mdl-navigation__link" href="">Ideas</a>
+          <a class="mdl-navigation__link" href="">            </a>
+          <a class="mdl-navigation__link" href="">My Stuff</a>
+          <a class="mdl-navigation__link" href="">Notifications</a>
+          <a class="mdl-navigation__link" href=""><img style="border-radius: 1000px; height:3vh" src="https://uploads.scratch.mit.edu/get_image/user/default_60x60.png">  AUser123</a>
+          
+        </nav>
+        
+      </div>
+    </header>
+    <main class="mdl-layout__content">
+      <div class="page-content"><!-- Your content goes here --></div>
+    </main>
+  </div>
+  
+</body>
+</html>

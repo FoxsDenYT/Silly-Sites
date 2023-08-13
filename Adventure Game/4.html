@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Choose your own adventure Game</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            body{
+                padding:0px;
+                margin: 0px;
+                
+                background-color: black;
+                font-size: 25pt;
+                color:white;
+                height:100vh !important;
+                width:100vw;
+                overflow:hidden;
+            }
+            *{font-family: monospace !important;user-select: none;}
+            .tophead{
+                color:black;
+                width:100vw;
+                background-color: lightgrey;
+                padding-top:5px;
+                padding-bottom:5px;
+                text-align: center;
+                position:sticky;
+                top:0px;
+                left:0px;
+            }
+            .opt{
+                color:black;
+                width:100vw;
+                background-color: lightgrey;
+                padding-top:5px;
+                padding-bottom:5px;
+                text-align: center;
+                position: ;
+                bottom:0px;
+                left:0px;
+            }
+            .opt>button{
+                background-color: lightgray;
+                font-family: monospace;
+                color:black;
+                border:0px;
+                font-size: 25pt;
+            }
+            .opt>button:hover, .sel{
+                background-color: darkgrey !important;
+            }
+            .content{
+                padding-left:25px;
+                overflow:scroll;
+                height: calc(100% - 100px) !important;
+                overflow-x:hidden; ;
+                
+            }
+            green{
+                color:green;
+            }
+            orange{
+                color:orange;
+            }
+            blue{
+                color:blue;
+            }
+            pink{
+                color:magenta;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="tophead">Choose your own adventure v1</div>
+        <div class="content">
+            <center>///You open up gomovie.com\\\<br>{{{Your computer shows a “virus” popup}}}</center>
+            <orange>James</orange>: OH NOOOOO<br>
+            <center>///You start crying\\\<br>///You dial <tooltip title="+1300 ILLEGAL SCAM">>+1300 455342 7226</tooltip>\\\</center>
+            <pink>Charjit</pink>: Hello thankyou for calling the microsofts. My name is Charjit, What is your problem?<br>
+            <orange>James</orange>: I was watching gomovie and a virus alert said to call you!<br>
+            <pink>Charjit</pink>: Alright, let me guide you through setting anydecks up.<br>
+            </div>
+        <div class="opt"><button onclick='window.location.href="4.html"' class="sel">[ Watch Movie ]</button>  <button onclick='window.location.href="5.html"'>[ Play Game ]</button></div>
+        <script>
+           var contentbox = document.getElementsByClassName("content")[0];
+            var currentpart = 0;
+            function opt1(){
+                if(currentpart == 0){
+                    contentbox.innerHTML = contentbox.innerHTML + "AAA"
+                }
+            }
+
+        </script>
+    </body>
+</html>

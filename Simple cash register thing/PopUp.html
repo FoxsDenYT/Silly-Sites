@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Cash Register</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body><center>
+        <img src="logo.png" alt="Cash Register" style="width:10vw; min-width: 200px;">
+       <p id="name">Hmmm</p>
+        <div id="UlContainer"></div>
+        <h3>Total: $<u id="total">0.00</u></h3>
+        <script async defer>
+            namebox = document.getElementById("name")
+            namebox.innerHTML = "Cashier: <b>" + decodeURIComponent(window.location.search.split("?")[1].split("name=")[1].split("&")[0]) + "</b>"
+            UlContainer = document.getElementById("UlContainer")
+            UlContainer.innerHTML = decodeURIComponent(window.location.search.split("?")[1].split("&Ul=")[1].split("&")[0])
+            totalbox = document.getElementById("total")
+            totalbox.innerText = decodeURIComponent(window.location.search.split("?")[1].split("&total=")[1])
+        </script></center>
+        <style>
+            ul{
+                list-style:none;
+            }
+            *, body{
+                    font-family: "Roboto Light";
+            }
+            body{
+                padding-top: 150px;
+                scale: 400%;
+                width: 100%;
+                overflow-x: hidden !important;
+            }
+        </style>    
+    </body>
+</html>

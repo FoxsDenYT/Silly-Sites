@@ -1,0 +1,17 @@
+{
+  "name": "Cafe SL",
+  "short_name": "Cafe SL",
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "images/icons/favicon.png",
+      "sizes": "600x600",
+      "type": "image/png"
+    }
+  ]
+}

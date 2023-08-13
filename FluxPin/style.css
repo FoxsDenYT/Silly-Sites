@@ -1,0 +1,28 @@
+.header {
+    background-color: #cccccc;
+    padding: 10px;
+    position: sticky;
+    top: 0px;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .hero {
+    background-image: url("https://lexica-serve-encoded-images.sharif.workers.dev/sm/02ac79f1-781f-49af-bb5d-e5c7699a15b7.jpg");
+    background-size: cover;
+    padding: 10px;
+    font-family: 'Arial', sans-serif;
+    height: 500px;
+    width:100%;
+  }
+
+  h1 {
+    color: #000000;
+    font-size: 24px;
+    font-family: 'Arial', sans-serif;
+  }
+
+  h2 {
+    color: #000000;
+    font-size: 18px;
+    font-family: 'Arial', sans-serif;
+  }

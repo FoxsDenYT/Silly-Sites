@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Cash Register</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        
+    </head>
+    <body>
+        <center>
+            <style>
+                ul{
+                    list-style:none;
+                }
+                *, body{
+                        font-family: "Roboto Light";
+                }
+            </style>
+            <img src="logo.png" alt="Cash Register Logo" style="width:10vw; min-width: 200px;"><br>
+            
+<select id="selecter" onchange="selUpdate(this)" title="Select An Item">
+                <option id="ree" disabled selected hidden>Select An Item</option>
+                <option disabled>Shells</option>
+                    <option value="1">       •    Small..........$0.20</option>
+                    <option value="2">       •    Medium.........$0.30</option>
+                    <option value="3">       •    Large..........$1</option>   
+                <option disabled>Rocks</option>
+                    <option value="4">       •    Small..........$0.50</option>
+                    <option value="5">       •    Medium.........$0.70</option>
+                    <option value="6">       •    Large..........$1.50</option>
+                <option disabled>Other</option>
+                    <option value="7">       •    Bike Ticker....$0.50</option>      
+            </select>
+            <input id="qty" type="number" min=1 max=10 value="1">
+            <input type="button" value="❌" onclick="clearForm()">
+            <input type="button" value="➕" onclick="addToOrder()"><button onclick="erase()">🔃</button><button onclick='resetCashierName()'>👥</button><button onclick="openPopup()">↗️</button><h3>Order Items</h3>
+            <h5 id="custdeets">Customer: </h5>
+        <ul id="Ul"></ul>
+        <h3>Total: $<u id="total">0.00</u></h3>
+        <input type="button" onclick="genSMSText()" value="📩" title="Prepare for sending by SMS"><br>
+        <textarea style="width: 50vw; height: 300px;" id="4SMS_Box">Cash Register
+Stuff, bits, and bobs
+Customer: </textarea>
+        <script>
+            var ul = document.getElementById("Ul");
+            var currentPrice = 0.00
+            var CashierName = prompt("Cashier Name")
+           
+            popupEnabled = 0
+            function openPopup(){
+                popupEnabled = 1
+                registerPopup = window.open("./PopUp.html?name=" + encodeURIComponent(CashierName) + "&Ul=No%20Order%20Items%20Yet...&total=0.00")
+            }
+            function resetCashierName(){
+                CashierName = prompt("Cashier Name");
+                registerPopup.location.href = "./PopUp.html?name=" + encodeURIComponent(CashierName) + "&Ul=" + encodeURIComponent(ul.outerHTML) + "&total=" + currentPrice
+            }
+            function erase(){
+                currentPrice = 0.00
+                order = [[]]
+                document.getElementById("qty").value = 1
+                document.getElementById("selecter").selectedIndex = 0
+                ul.innerHTML = ""
+                currentPrice = JSON.parse(currentPrice)
+            }
+            function genSMSText(){
+                var smsBox = document.getElementById("4SMS_Box")
+                smsBox.innerHTML = smsBox.innerHTML + prompt("Customer Info:") + "\nCashier: " + CashierName + "\n"
+                var qtybox = document.getElementById("qty");
+                for (let i of order[0]) {
+                    console.log(i)
+                    num = i['price']*i['qty']
+                    fangoom = i['price']*i["qty"]
+                    if(fangoom.toString().startsWith(0)){
+                        // thingoom = qtybox.value.toString().length - 4
+                        // qtyval = qtybox.value.slice(thingoom).reverse().toString().replaceAll(",","")
+                        Num1 = i["qty"]*10
+                        num = i['price']*Num1/10
+                        if(num.toString().split(".")[1].length==1){
+                            console.log("Decimal 1Digit")
+                            num = num.toString().concat("0")
+                        }
+                    }else{
+                        num = i['price']*i["qty"]
+                    }
+                    
+                    itext = "• "+i['qty']+"x "+i['itemname'] + " $"+num
+                    
+                    smsBox.innerHTML = smsBox.innerHTML + itext + "\n"
+                }
+            }
+            function clearForm(){
+                document.getElementById("qty").value = 1
+                document.getElementById("selecter").selectedIndex = 0
+            }
+            function selUpdate(obj){                
+                selObj = obj
+            }
+            function openRegisterPopup(){
+                if(popupEnabled == 1){
+                    registerPopup.location.href = "./PopUp.html?name=" + encodeURIComponent(CashierName) + "&Ul=" + encodeURIComponent(ul.outerHTML) + "&total=" + currentPrice
+                }
+            }
+            function addToOrder(){
+                var newItem = document.createElement("li");
+                var qtybox = document.getElementById("qty");
+                console.log(qtybox.value)
+                
+                console.log(num)
+                var num = 0;
+                fangoom = items[selObj.value]['price']*qtybox.value
+                if(fangoom.toString().startsWith(0)){
+                    console.log("true")
+                    // thingoom = qtybox.value.toString().length - 4
+                    // qtyval = qtybox.value.slice(thingoom).reverse().toString().replaceAll(",","")
+                    Num1 = qtybox.value*10
+                    num = items[selObj.value]['price']*Num1/10
+                    if(num.toString().split(".")[1].length==1){
+                        console.log("Decimal 1Digit")
+                        num = num.toString().concat("0")
+                    }
+                }else{
+                    num = items[selObj.value]['price']*qtybox.value
+                }
+                
+                newItem.innerHTML = "•    "+"<b>"+qtybox.value+"x </b>" + items[selObj.value]['itemname'] + "<i>" + "      $"+num+"<\i>"
+                    currentPrice = JSON.parse(currentPrice) + JSON.parse(num)
+                    //currentPrice = Math.round(currentPrice)
+                    console.log(currentPrice)
+                    document.getElementById("total").innerText = currentPrice
+                    ul.appendChild(newItem);
+                order[0].push(
+                    {
+                        "itemname": items[selObj.value]['itemname'],
+                        "price": items[selObj.value]['price'],
+                        "qty": qtybox.value
+                    }
+                )
+                
+                clearForm()
+                openRegisterPopup()
+               
+            }
+            items = {
+                "1": {
+                    itemname: "Small Shell",
+                    price: 0.20
+                },
+                "2": {
+                    itemname: "Medium Shell",
+                    price: 0.30
+                },
+                "3": {
+                    itemname: "Large Shell",
+                    price: 1
+                },
+                "4": {
+                    itemname: "Small Rock",
+                    price: 0.50
+                },
+                "5": {
+                    itemname: "Medium Rock",
+                    price: 0.70
+                },
+                "6": {
+                    itemname: "Large Rock",
+                    price: 1.50
+                },
+                "7": {
+                    itemname: "Bike Ticker",
+                    price: 0.50
+                }  
+            }
+            order = [[]]
+                
+            </script>
+            </center>
+    </body>
+</html>

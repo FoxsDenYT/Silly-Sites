@@ -1,0 +1,13 @@
+
+<!DOCTYPE html>
+<html><body><script src="https://smtpjs.com/v3/smtp.js"></script> <script>
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+Email.send({
+    SecureToken: "3a23d3e3-1b37-46ab-be28-c43357366842",
+    To : "cslweborder@outlook.com",
+    From : "cslweborder@outlook.com",
+    Subject : "New Order",
+    Body : "<h1>Cafe SL</h1><h2>New Order</h2><h3>Name: " + urlParams.get("custname") + "<br>Email: " + urlParams.get("custem") + "<br>Time And Date: " + decodeURIComponent(urlParams.get("td")) + "<br>Order: " + decodeURIComponent(urlParams.get("ordercsv")) + "</h3>"
+});</script></body></html>

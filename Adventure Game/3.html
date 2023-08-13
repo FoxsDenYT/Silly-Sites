@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Choose your own adventure Game</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            body{
+                padding:0px;
+                margin: 0px;
+                
+                background-color: black;
+                font-size: 25pt;
+                color:white;
+                height:100vh !important;
+                width:100vw;
+                overflow:hidden;
+            }
+            *{font-family: monospace !important;user-select: none;}
+            .tophead{
+                color:black;
+                width:100vw;
+                background-color: lightgrey;
+                padding-top:5px;
+                padding-bottom:5px;
+                text-align: center;
+                position:sticky;
+                top:0px;
+                left:0px;
+            }
+            .opt{
+                color:black;
+                width:100vw;
+                background-color: lightgrey;
+                padding-top:5px;
+                padding-bottom:5px;
+                text-align: center;
+                position: ;
+                bottom:0px;
+                left:0px;
+            }
+            .opt>button{
+                background-color: lightgray;
+                font-family: monospace;
+                color:black;
+                border:0px;
+                font-size: 25pt;
+            }
+            .opt>button:hover, .sel{
+                background-color: darkgrey !important;
+            }
+            .content{
+                padding-left:25px;
+                overflow:scroll;
+                height: calc(100% - 100px) !important;
+                overflow-x:hidden; ;
+                
+            }
+            green{
+                color:green;
+            }
+            orange{
+                color:orange;
+            }
+            blue{
+                color:blue;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="tophead">Choose your own adventure v1</div>
+        <div class="content">
+            <green>Mum</green>: Hey James! Open up! Look what I have!<br>
+            <orange>James</orange>: Alright coming!!<br>
+            <green>Mum</green>: You’re gonna love it!<br>
+            <orange>James</orange>: OH. MY. GOD. A new computer! My current one runs worse than a potato!<br>
+            <center>///You go and set it up right away\\\</center>
+            <orange>James</orange>: Finally a PC that can play my games and watch a movie from gomovies at the same time!<br>
+        </div>
+        <div class="opt"><button onclick='window.location.href="4.html"'>[ Watch Movie ]</button>  <button onclick='window.location.href="5.html"'>[ Play Game ]</button></div>
+        <script>
+           var contentbox = document.getElementsByClassName("content")[0];
+            var currentpart = 0;
+            function opt1(){
+                if(currentpart == 0){
+                    contentbox.innerHTML = contentbox.innerHTML + "AAA"
+                }
+            }
+
+        </script>
+    </body>
+</html>

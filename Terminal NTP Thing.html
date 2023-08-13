@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body{
+            background:black;
+            font-family:sans-serif;
+            color:white;
+        }
+        input{
+            background:none;
+            color:white;
+            border:0px;
+            outline:0px;
+        }
+    </style>
+</head>
+<body>
+    <p onchange="" id="textarea">
+        StarTerm v0.1<br />
+        Enter any command or 'help' for help
+    </p>
+    <form id="form">
+        <label for="cmdinput">>> </label>
+        <input id="cmdinput" style="width: 98%;" />
+        <input type="submit" style="display: none" />
+    </form>
+    
+    <script>
+        var form = document.getElementById("form");
+        function handleForm(event) {
+            event.preventDefault();
+            cmdin = document.getElementById("cmdinput")
+            txtarea = document.getElementById("textarea")
+            txtarea.innerHTML = txtarea.innerHTML + "<br>>> " + cmdin.value
+            cmdin.value = cmdin.value.toLowerCase()
+            if (cmdin.value.startsWith("waterfox")) {
+                txtarea.innerHTML = txtarea.innerHTML + "<br>   Launching waterfox..."
+                window.chrome.webview.postMessage("C:\Program Files\Waterfox\waterfox.exe"); 
+            }
+            else if (cmdin.value.startsWith("onenote")) {
+                txtarea.innerHTML = txtarea.innerHTML + "<br>   Launching onenote..."
+                window.chrome.webview.postMessage("C:\path\OpenInDefault.bat http://onenote.com/notebooks/pwa"); 
+            }
+            else if (cmdin.value.startsWith("explorer")) {
+                txtarea.innerHTML = txtarea.innerHTML + "<br>   Launching explorer..."
+                window.chrome.webview.postMessage("C:\windows\explorer.exe");
+            }
+            else if (cmdin.value.startsWith("spotify")) {
+                txtarea.innerHTML = txtarea.innerHTML + "<br>   Launching spotify..."
+                window.chrome.webview.postMessage("C:\Users\techs\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Spotify.lnk");
+            }
+            else if (cmdin.value.startsWith("gmail")) {
+                txtarea.innerHTML = txtarea.innerHTML + "<br>   Launching gmail..."
+                window.chrome.webview.postMessage("C:\path\OpenInDefault.bat http://mail.google.com/pwa"); 
+
+            }
+            else if (cmdin.value.startsWith("code")) {
+                txtarea.innerHTML = txtarea.innerHTML + "<br>   Launching code..."
+                window.chrome.webview.postMessage("C:\Users\techs\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Visual Studio Code.lnk"); 
+
+            }
+            else if (cmdin.value.startsWith("vs")) {
+                txtarea.innerHTML = txtarea.innerHTML + "<br>   Launching vs..."
+                window.chrome.webview.postMessage("C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Visual Studio 2022.lnk"); 
+
+            }
+            else if (cmdin.value.startsWith("scratch")) {
+                txtarea.innerHTML = txtarea.innerHTML + "<br>   Launching scratch..."
+                window.chrome.webview.postMessage("C:\path\OpenInDefault.bat http://scratch.mit.edu/pwa"); 
+            }
+            else if (cmdin.value.startsWith("whatsapp")) {
+                txtarea.innerHTML = txtarea.innerHTML + "<br>   Launching whatsapp..."
+                window.chrome.webview.postMessage("C:\path\OpenInDefault.bat whatsapp:"); 
+            }
+            else if (cmdin.value.startsWith("discoed")) {
+                txtarea.innerHTML = txtarea.innerHTML + "<br>   Launching discord..."
+                window.chrome.webview.postMessage("C:\path\OpenInDefault.bat discord:"); 
+            }
+            cmdin.value = ""
+        }
+        form.addEventListener('submit', handleForm);
+    </script>
+</body>
+</html>
